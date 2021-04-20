@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for ca project.
 
@@ -23,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '!2^i%!a@1)r&86pmf$=^e4z=@s(xk30hc2vhmw1_a+wldktbfe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
