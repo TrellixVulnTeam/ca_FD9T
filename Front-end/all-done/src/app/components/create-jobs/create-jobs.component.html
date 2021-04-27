@@ -1,0 +1,47 @@
+<ng-template matStepLabel>Information de compte</ng-template>
+<form [formGroup]="secondFormGroup" fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="end stretch">
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+        <mat-form-field appearance="fill" fxFlex="50">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Name" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="50">
+            <mat-label>Nombre de candidat</mat-label>
+            <input matInput type="number" formControlName="nb_users" required>
+        </mat-form-field>
+    </div>
+    <!--div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+        <mat-form-field appearance="fill" fxFlex="65">
+            <mat-label>Nombre de candidat</mat-label>
+            <input matInput type="number" formControlName="nb_users" required>
+        </mat-form-field>
+    </div-->
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+        <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Compétences</mat-label>
+            <textarea matInput placeholder="compétences1, compétences2, ..." formControlName="competences"></textarea>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+        <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..." formControlName="about_job"></textarea>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+        <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Horaire de travaille</mat-label>
+            <input matInput formControlName="horaire" placeholder="xx:xx:xx" required>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+        <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Type de job</mat-label>
+            <input matInput formControlName="type_job" placeholder="partiel ou complet" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-button type="reset">Reset</button>
+        <button mat-button type="submit" (click)="create()">Valider</button>
+    </div>
+</form>

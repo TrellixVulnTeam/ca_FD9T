@@ -1,0 +1,7 @@
+<mat-toolbar>
+    <span routerLink="/">All-done</span>
+    <span fxFlex="auto"></span>
+    <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="loginWithRedirect()" mat-raised-button color="primary">Connexion</button>
+    <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="signupWithRedirect()" mat-flat-button color="accent">Inscription</button>
+    <button *ngIf="auth.isAuthenticated$ | async" (click)="logout()" mat-raised-button color="warn">Logout</button>
+</mat-toolbar>

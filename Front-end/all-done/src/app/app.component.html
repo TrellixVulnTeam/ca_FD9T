@@ -1,0 +1,7 @@
+<app-topbar></app-topbar>
+<div *ngIf="auth.isAuthenticated$ | async">
+    <app-sidenav></app-sidenav>
+</div>
+<div *ngIf="(auth.isAuthenticated$ | async) === false">
+    <app-sidenav-default></app-sidenav-default>
+</div>
