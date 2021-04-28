@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.myemail = null;
     while(this.myemail == null){
-      console.log(this.myemail);
+      this.collect();
     }
     
   }
