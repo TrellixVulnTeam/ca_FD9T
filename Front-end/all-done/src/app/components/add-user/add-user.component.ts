@@ -64,7 +64,8 @@ export class AddUserComponent implements OnInit {
       birth_date: [''],
       fourth_date: [''],
       about_me: [''],
-      competences: ['']
+      competences: [''],
+      certifier: ['']
     });
   }
 
@@ -72,12 +73,14 @@ export class AddUserComponent implements OnInit {
     if(this.firstFormGroup.value.is_client==true){
       this.firstFormGroup.value.fourth_date = this.firstFormGroup.value.birth_date;
       this.firstFormGroup.value.ent_name = null;
+      this.firstFormGroup.value.certifier = false;
     }else{
       this.firstFormGroup.value.birth_date = this.firstFormGroup.value.fourth_date;
       this.firstFormGroup.value.competences = null;
+      this.firstFormGroup.value.certifier = null;
     }
 
-    this.http.post<string>('https://15.237.22.205/all-doneAPI/users/add_users',this.firstFormGroup.value).subscribe((result: string)=> {
+    this.http.post<string>('http://15.237.22.205/all-doneAPI/users/add_users',this.firstFormGroup.value).subscribe((result: string)=> {
 
       if(result=="user created"){
         console.log("création réussi !!!");
