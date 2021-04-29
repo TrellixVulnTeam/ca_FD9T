@@ -1,4 +1,3 @@
-import { Jobs } from './../../shared/models/jobs.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {AfterViewInit, ViewChild} from '@angular/core';
@@ -6,7 +5,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Observable } from 'rxjs';
 
 export interface PeriodicElement {
   id: number;
@@ -38,8 +36,6 @@ export class MyListJobsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   email: string;
-  
-  test: PeriodicElement;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -60,18 +56,14 @@ export class MyListJobsComponent implements OnInit {
 
     this.auth.user$.subscribe(result => {
       myJSON = {"email": result.email};
-      this.email = result.email;
-      console.log(this.email);
+      this.email = myJSON;
     });
 
-    this.http.post<any>('https://15.237.22.205/all-doneAPI/jobs/my_job',this.email).subscribe((result)=> {
+    this.http.post<any>('http://15.237.22.205/all-doneAPI/jobs/my_job',this.email).subscribe((result)=> {
       console.log(result);
-      //this.brandList = result;
-      //this.dataSource = new MatTableDataSource<any>(result);
-      //console.log(this.dataSource)
-      /////////////////
-      
-      //console.log(result[0]["id"]);
+      this.brandList = result;
+      this.dataSource = new MatTableDataSource<any>(result);
+
     });
 
   }

@@ -28,11 +28,7 @@ export class ProfileComponent implements OnInit {
   constructor(public auth: AuthService, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.myemail = null;
-    while(this.myemail == null){
-      this.collect();
-    }
-    
+    this.collect();
   }
   
   public collect(): void {

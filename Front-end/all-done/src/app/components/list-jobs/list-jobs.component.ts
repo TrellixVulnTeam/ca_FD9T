@@ -64,13 +64,10 @@ export class ListJobsComponent implements OnInit {
       console.log(this.email);
     });
 
-    this.http.get<any>('https://15.237.22.205/all-doneAPI/jobs/list_job').subscribe((result)=> {
+    this.http.get<any>('http://15.237.22.205/all-doneAPI/jobs/list_job').subscribe((result)=> {
       
       this.brandList = result;
       this.dataSource = new MatTableDataSource<any>(result);
-      /////////////////
-      
-      //console.log(result[0]["id"]);
     });
 
   }
