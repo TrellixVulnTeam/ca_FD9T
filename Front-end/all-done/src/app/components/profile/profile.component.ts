@@ -25,11 +25,11 @@ export class ProfileComponent implements OnInit {
   competences: string;
   certifier: string;
 
-  constructor(public auth: AuthService, private http: HttpClient, private router: Router) { }
-
-  ngOnInit(): void {
+  constructor(public auth: AuthService, private http: HttpClient, private router: Router) {
     this.collect();
-  }
+   }
+
+  ngOnInit(): void {}
   
   public collect(): void {
     var myJSON;
