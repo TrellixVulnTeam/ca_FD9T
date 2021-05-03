@@ -14,7 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
 import { SidenavDefaultComponent } from './shared/components/sidenav-default/sidenav-default.component';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { HttpService } from './shared/services/http.service';
 import { ProfileComponent } from './components/profile/profile.component';

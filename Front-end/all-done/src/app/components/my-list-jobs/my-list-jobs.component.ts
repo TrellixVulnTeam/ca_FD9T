@@ -59,7 +59,7 @@ export class MyListJobsComponent implements OnInit {
       this.email = myJSON;
     });
 
-    this.http.post<any>('http://15.237.22.205/all-doneAPI/jobs/my_job',this.email).subscribe((result)=> {
+    this.http.post<any>('https://www.conseil-alliance-backend.com/all-doneAPI/jobs/my_job',this.email).subscribe((result)=> {
       console.log(result);
       this.brandList = result;
       this.dataSource = new MatTableDataSource<any>(result);

@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
       console.log(myJSON);
       this.email = myJSON;
     });
-    this.http.post<any>('http://15.237.22.205/all-doneAPI/users/profile',this.email).subscribe((result)=> {
+    this.http.post<any>('https://www.conseil-alliance-backend.com/all-doneAPI/users/profile',this.email).subscribe((result)=> {
       this.first_name = result["first_name"];
       this.last_name = result["last_name"];
       this.ent_name = result["ent_name"];

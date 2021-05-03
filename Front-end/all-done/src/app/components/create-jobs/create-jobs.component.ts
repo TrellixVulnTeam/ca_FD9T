@@ -48,7 +48,7 @@ export class CreateJobsComponent implements OnInit {
     });
     this.secondFormGroup.value.email = this.email;
     console.log(this.secondFormGroup.value);
-    this.http.post<string>('http://15.237.22.205/all-doneAPI/jobs/create_job',this.secondFormGroup.value).subscribe((result: string)=> {
+    this.http.post<string>('https://www.conseil-alliance-backend.com/all-doneAPI/jobs/create_job',this.secondFormGroup.value).subscribe((result: string)=> {
       
       if(result=="job created"){
         console.log("création réussi !!!");

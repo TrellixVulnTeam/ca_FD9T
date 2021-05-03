@@ -31,13 +31,11 @@ export class LoadingComponent implements OnInit {
 
   isExist(myJSON: string): void {
     console.log(myJSON);
-    this.http.post<string>('https://15.237.22.205/all-doneAPI/users/is_exist',myJSON).subscribe((is_exist: string)=> {
+    this.http.post<string>('https://www.conseil-alliance-backend.com/all-doneAPI/users/is_exist',myJSON).subscribe((is_exist: string)=> {
       this.is_exist = is_exist;
       if(this.is_exist=="true"){
-        console.log("le client existe deja");
         this.router.navigate(['/profile']);
       }else{
-        console.log("le client n'existe pas");
         this.router.navigate(['/add_user']);
       }
     });

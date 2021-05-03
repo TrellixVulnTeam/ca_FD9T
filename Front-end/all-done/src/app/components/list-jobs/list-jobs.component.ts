@@ -6,7 +6,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Observable } from 'rxjs';
 
 //import {Jobs} from './src/app/shared/models/jobs.model';
 import { HttpService } from 'src/app/shared/services/http.service';
@@ -64,7 +63,7 @@ export class ListJobsComponent implements OnInit {
       console.log(this.email);
     });
 
-    this.http.get<any>('http://15.237.22.205/all-doneAPI/jobs/list_job').subscribe((result)=> {
+    this.http.get<any>('https://www.conseil-alliance-backend.com/all-doneAPI/jobs/list_job').subscribe((result)=> {
       
       this.brandList = result;
       this.dataSource = new MatTableDataSource<any>(result);

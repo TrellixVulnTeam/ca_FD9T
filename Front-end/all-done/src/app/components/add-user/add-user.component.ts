@@ -80,7 +80,7 @@ export class AddUserComponent implements OnInit {
       this.firstFormGroup.value.certifier = null;
     }
 
-    this.http.post<string>('http://15.237.22.205/all-doneAPI/users/add_users',this.firstFormGroup.value).subscribe((result: string)=> {
+    this.http.post<string>('https://www.conseil-alliance-backend.com/all-doneAPI/users/add_users',this.firstFormGroup.value).subscribe((result: string)=> {
 
       if(result=="user created"){
         console.log("création réussi !!!");

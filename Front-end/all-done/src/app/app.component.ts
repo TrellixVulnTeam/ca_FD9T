@@ -11,7 +11,6 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AppComponent implements OnInit {
   title = 'all-done';
-  is_exist: string;
   constructor(public auth: AuthService){}
   
   ngOnInit(): void {
