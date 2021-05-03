@@ -1,14 +1,14 @@
-<p>Prénom : {{first_name}}<br></p>
-<p>Nom : {{last_name}}<br></p>
-<p>Nom d'entreprise : {{ent_name}}<br></p>
-<p>Email : {{myemail}}<br></p>
-<p>Type : {{is_client}}<br></p>
-<p>Address : {{address}}<br></p>
-<p>Pays : {{city}}<br></p>
-<p>Phone : {{phone}}<br></p>
-<p>Date de naissance : {{birth_date}}<br></p>
-<p>Date de création : {{fourth_date}}<br></p>
-<p>Description : {{about_me}}<br></p>
-<p>Compétence : {{competences}}<br></p>
-<p>Certifier : {{certifier}}<br></p>
+<p>Prénom : {{first_name | async}}<br></p>
+<p>Nom : {{last_name | async}}<br></p>
+<p>Nom d'entreprise : {{ent_name | async}}<br></p>
+<p>Email : {{myemail | async}}<br></p>
+<p>Type : {{is_client | async}}<br></p>
+<p>Address : {{address | async}}<br></p>
+<p>Pays : {{city | async}}<br></p>
+<p>Phone : {{phone | async}}<br></p>
+<p>Date de naissance : {{birth_date | async}}<br></p>
+<p>Date de création : {{fourth_date | async}}<br></p>
+<p>Description : {{about_me | async}}<br></p>
+<p>Compétence : {{competences | async}}<br></p>
+<p>Certifier : {{certifier | async}}<br></p>
 <button mat-raised-button color="primary" (click)="collect()">Refresh</button>
