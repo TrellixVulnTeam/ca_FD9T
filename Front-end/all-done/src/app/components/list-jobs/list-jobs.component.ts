@@ -31,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ListJobsComponent implements OnInit {
   
   brandList: string[] = null;
-  displayedColumns: string[] = ['id', 'name', 'nb_users', 'competences','about_job','horaire','type_job'];
+  displayedColumns: string[] = ['drop', 'id', 'name', 'nb_users', 'competences','about_job','horaire','type_job'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   //dataSource: PeriodicElement = null;
 
@@ -69,6 +69,10 @@ export class ListJobsComponent implements OnInit {
       this.dataSource = new MatTableDataSource<any>(result);
     });
 
+  }
+
+  aff(id: string): void{
+    console.log(id);
   }
 
 }

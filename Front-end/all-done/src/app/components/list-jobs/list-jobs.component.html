@@ -1,6 +1,12 @@
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 
+        <!-- Button delete Column -->
+        <ng-container matColumnDef="drop">
+            <th mat-header-cell *matHeaderCellDef>drop</th>
+            <td mat-cell *matCellDef="let element"><button (click)="aff(element.id)">Drop</button></td>
+        </ng-container>
+        
         <!-- Position Column -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> No. </th>
