@@ -90,6 +90,33 @@ def MyJob(request):
     return Response(var)
 
 @api_view(['GET'])
+def DetailJob(request, pk):
+
+    job = jobs.objects.get(pk=pk)
+    user = users.objects.get(pk=job.user.pk)
+    var = { 
+        "name": job.name, 
+        "nb_users": job.nb_users, 
+        "competences": job.competences, 
+        "about_job": job.about_job, 
+        "horaire": job.horaire, 
+        "type_job": job.type_job, 
+        "ent_name": user.ent_name, 
+        "address": user.address, 
+        "phone": user.phone,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "email": user.email,
+        "city": user.city,
+        "birth_date": user.birth_date,
+        "fourth_date": user.fourth_date,
+        "about_me": user.about_me,
+        "certifier": user.certifier,
+    }
+    
+    return Response(var)
+
+@api_view(['GET'])
 def Postulant(request):
     api_urls = {
         "Présentation des postulant"

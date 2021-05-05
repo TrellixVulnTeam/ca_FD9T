@@ -12,6 +12,7 @@ urlpatterns = [
     path('jobs/create_job', views.CreateJob, name="create_job"),
     path('jobs/list_job', views.ListJob, name="list_job"),
     path('jobs/my_job', views.MyJob, name="my_job"),
+    path('jobs/detail/<str:pk>', views.DetailJob, name="detail"),
 
     path('postulant/', views.Postulant, name="postulant"),
     path('postulant/create_postulant', views.CreatePostulant, name="create_postulant"),
