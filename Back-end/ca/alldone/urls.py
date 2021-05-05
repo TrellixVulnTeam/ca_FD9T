@@ -7,6 +7,7 @@ urlpatterns = [
     path('users/', views.Users, name="users"),
     path('users/is_exist', views.IsExist, name="is_exist"),
     path('users/add_users', views.AddUsers, name="add_Users"),
+    path('users/profile', views.Profile, name="profile"),
 
     path('jobs/', views.Jobs, name="jobs"),
     path('jobs/create_job', views.CreateJob, name="create_job"),

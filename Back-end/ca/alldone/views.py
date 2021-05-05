@@ -25,6 +25,30 @@ def Users(request):
     return Response(api_urls)
 
 @api_view(['POST'])
+def Profile(request):
+    try:
+        user = users.objects.get(email=request.data.get('email'))
+        user_all = { 
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "ent_name": user.ent_name,
+            "email": user.email,
+            "is_client": user.is_client,
+            "address": user.address,
+            "city": user.city,
+            "phone": user.phone,
+            "birth_date": user.birth_date,
+            "fourth_date": user.fourth_date,
+            "about_me": user.about_me,
+            "competences": user.competences,
+            "certifier": user.certifier,
+        }
+    except ObjectDoesNotExist:
+        user_all = "Profil n'existe pas !!!"
+
+    return Response(user_all)
+
+@api_view(['POST'])
 def IsExist(request):
     
     try:
@@ -60,34 +84,38 @@ def CreateJob(request):
 @api_view(['GET'])
 def ListJob(request):
 
-    job = list(jobs.objects.all())
-    length = len(job)
+    response = []
+    job = jobs.objects.all()
+    response = [{
+        "id": job.pk,
+        "name": job.name,
+        "nb_users": job.nb_users,
+        "competences": job.competences,
+        "about_job": job.about_job,
+        "horaire": job.horaire,
+        "type_job": job.type_job,
+        } for job in job ]
 
-    var = {}
-    i = 0
-    
-    for i in range(length):
-        user = users.objects.get(pk=job[i].user.id)
-        var[i] = { "name": job[i].name, "nb_users": job[i].nb_users, "competences": job[i].competences, "about_job": job[i].about_job, "horaire": job[i].horaire, "type_job": job[i].type_job, "ent_name": user.ent_name, "address": user.address, "phone": user.phone}
-        
-    return Response(var)
+    return Response(response)
 
 @api_view(['POST'])
 def MyJob(request):
 
     user = users.objects.get(email=request.data.get('email'))
-
-    job = list(jobs.objects.filter(user=user))
+    job = jobs.objects.filter(user=user)
+    response = []
     
-    length = len(job)
-
-    var = {}
-    i = 0
+    response = [{
+        "id": job.pk,
+        "name": job.name,
+        "nb_users": job.nb_users,
+        "competences": job.competences,
+        "about_job": job.about_job,
+        "horaire": job.horaire,
+        "type_job": job.type_job,
+        } for job in job ]
     
-    for i in range(length):
-        var[i] = { "name": job[i].name, "nb_users": job[i].nb_users, "competences": job[i].competences, "about_job": job[i].about_job, "horaire": job[i].horaire, "type_job": job[i].type_job, "ent_name": user.ent_name, "address": user.address, "phone": user.phone}
-    
-    return Response(var)
+    return Response(response)
 
 @api_view(['GET'])
 def DetailJob(request, pk):
