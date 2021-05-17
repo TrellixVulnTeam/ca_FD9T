@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { ProfileService } from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -25,11 +26,25 @@ export class ProfileComponent implements OnInit {
   competences: string;
   certifier: string;
 
-  constructor(public auth: AuthService, private http: HttpClient, private router: Router) {
-    this.collect();
+  constructor(public auth: AuthService, private http: HttpClient, private router: Router, private profile: ProfileService) {
+    //this.collect();
    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.first_name = this.profile.getfirst_name();
+    this.last_name = this.profile.getlast_name();
+    this.ent_name = this.profile.getent_name();
+    this.myemail = this.profile.getmyemail();
+    this.is_client = this.profile.getis_client();
+    this.address = this.profile.getaddress();
+    this.city = this.profile.getcity();
+    this.phone = this.profile.getphone();
+    this.birth_date = this.profile.getbirth_date();
+    this.fourth_date = this.profile.getfourth_date();
+    this.about_me = this.profile.getabout_me();
+    this.competences = this.profile.getcompetences();
+    this.certifier = this.profile.getcertifier();
+  }
   
   public collect(): void {
     var myJSON;

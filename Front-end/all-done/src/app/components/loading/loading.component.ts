@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { ProfileService } from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-loading',
@@ -10,24 +11,9 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class LoadingComponent implements OnInit {
 
-  //////////////////////
-  first_name: string;
-  last_name: string;
-  ent_name: string;
-  myemail: string;
-  is_client: string;
-  address: string;
-  city: string;
-  phone: string;
-  birth_date: string;
-  fourth_date: string;
-  about_me: string;
-  competences: string;
-  certifier: string;
-  //////////////////////
   is_exist: string;
   
-  constructor(public auth: AuthService, private router: Router, private http: HttpClient) { }
+  constructor(public auth: AuthService, private router: Router, private http: HttpClient, private profile: ProfileService) { }
 
   ngOnInit(): void {
 
@@ -45,35 +31,20 @@ export class LoadingComponent implements OnInit {
   }
 
   isExist(myJSON: string): void {
-    console.log(myJSON);
     this.http.post<string>('https://www.conseil-alliance-backend.com/all-doneAPI/users/is_exist',myJSON).subscribe((is_exist: string)=> {
       this.is_exist = is_exist;
       if(this.is_exist=="true"){
-        this.profile(myJSON);
-        this.router.navigate(['/profile']);
+        this.SetProfile(myJSON);
+        this.router.navigate(['/list_jobs']);
       }else{
         this.router.navigate(['/add_user']);
       }
     });
   }
 
-  profile(myJSON: string) {
+  SetProfile(myJSON: string) {
     this.http.post<any>('https://www.conseil-alliance-backend.com/all-doneAPI/users/profile',myJSON).subscribe((result)=> {
-      this.first_name = result["first_name"];
-      this.last_name = result["last_name"];
-      this.ent_name = result["ent_name"];
-      this.myemail = result["email"];
-      this.is_client = result["is_client"];
-      this.address = result["address"];
-      this.city = result["city"];
-      this.phone = result["phone"];
-      this.birth_date = result["birth_date"];
-      this.fourth_date = result["fourth_date"];
-      this.about_me = result["about_me"];
-      this.competences = result["competences"];
-      this.certifier = result["certifier"];
-      console.log(this.address);
+      this.profile.SetProfile(result["first_name"],result["last_name"],result["ent_name"],result["email"],result["is_client"],result["address"],result["city"],result["phone"],result["birth_date"],result["fourth_date"],result["about_me"],result["competences"],result["certifier"]);
     });
   }
-
 }
