@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { ProfileService } from 'src/app/shared/services/profile.service';
 
@@ -10,6 +9,7 @@ import { ProfileService } from 'src/app/shared/services/profile.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  
   email: string;
 
   first_name: string;
@@ -26,8 +26,9 @@ export class ProfileComponent implements OnInit {
   competences: string;
   certifier: string;
 
-  constructor(public auth: AuthService, private http: HttpClient, private router: Router, private profile: ProfileService) {
+  constructor(public auth: AuthService, private http: HttpClient, private profile: ProfileService) {
     //this.collect();
+    //this.ngOnInit();
    }
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class ProfileComponent implements OnInit {
     this.about_me = this.profile.getabout_me();
     this.competences = this.profile.getcompetences();
     this.certifier = this.profile.getcertifier();
+    console.log(this.profile.getaddress());
   }
   
   public collect(): void {

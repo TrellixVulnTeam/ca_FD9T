@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileService {
 
+export class ProfileService {
+  
   private first_name: string;
   public getfirst_name(): string {
     return this.first_name;

@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthModule } from '@auth0/auth0-angular';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        AuthModule.forRoot({
+          domain: 'conseil-alliance.eu.auth0.com',
+          clientId: 'KJ9lkqhatRPsX6zTIEAIqK64WlsyOgJd'
+        }),
+        RouterTestingModule,
+        ReactiveFormsModule
       ],
       declarations: [
         AppComponent
